@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  develop:
+    image: postgres:15.1
+    container_name: develop_pg
+    restart: always
+    environment:
+      POSTGRES_DB: developdb
+      POSTGRES_USER: user_develop
+      POSTGRES_PASSWORD: secret123
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+
